@@ -1,0 +1,21 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "xo",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "no-unreachable": "off",
+        "no-unused-vars": "off",
+        "object-shorthand": "off",
+        "arrow-body-style": "off",
+        "no-else-return": "off"
+    }
+}
