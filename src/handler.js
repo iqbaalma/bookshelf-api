@@ -13,11 +13,6 @@ const addBook = (request, h) => {
 		reading,
 	} = request.payload;
 
-	const id = nanoid(16);
-	const finished = pageCount === readPage;
-	const insertedAt = new Date().toISOString();
-	const updatedAt = insertedAt;
-
 	const book = {
 		id,
 		name,
@@ -33,6 +28,11 @@ const addBook = (request, h) => {
 		updatedAt,
 	};
 	books.push(book);
+
+	const id = nanoid(16);
+	const finished = pageCount === readPage;
+	const insertedAt = new Date().toISOString();
+	const updatedAt = insertedAt;
 
 	if (name === undefined) {
 		const response = h.response({
