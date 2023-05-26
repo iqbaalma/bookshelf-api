@@ -150,6 +150,10 @@ const getAllBooks = (request, h) => {
 	return response;
 };
 
+const getBookById = (request, h) => {
+	
+};
+
 module.exports = {
 	addBook,
 	getAllBooks,
