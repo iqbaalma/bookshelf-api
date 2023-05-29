@@ -272,9 +272,34 @@ const editBook = (request, h) => {
 	}
 };
 
+const deleteBook = (response, h) => {
+	const {id} = request.params;
+	const index = books.findIndex(book => book.id === id);
+
+	if (index !== -1) {
+		books.splice(index, 1);
+		const successResponse = h.response({
+			status: 'success',
+			message: 'Buku berhasil dihapus',
+		});
+
+		successResponse.code(200);
+		return successResponse;
+	}
+
+	const failResponse = h.response({
+		status: 'fail',
+		message: 'Buku gagal dihapus. Id tidak ditemukan',
+	});
+
+	failResponse.code(404);
+	return failResponse;
+};
+
 module.exports = {
 	addBook,
 	getAllBooks,
 	getBookById,
 	editBook,
+	deleteBook,
 };
