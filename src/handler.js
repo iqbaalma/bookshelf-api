@@ -273,6 +273,7 @@ const editBook = (request, h) => {
 };
 
 const deleteBook = (response, h) => {
+	// eslint-disable-next-line no-undef
 	const {id} = request.params;
 	const index = books.findIndex(book => book.id === id);
 
