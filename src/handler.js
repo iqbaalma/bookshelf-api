@@ -151,9 +151,9 @@ const getAllBooks = (request, h) => {
 };
 
 const getBookById = (request, h) => {
-	const {id} = request.params;
+	const {bookId} = request.params;
 
-	const book = books.filter(book => book.id === id)[0];
+	const book = books.filter(book => book.id === bookId)[0];
 
 	if (book) {
 		const response = h.response({
@@ -164,7 +164,6 @@ const getBookById = (request, h) => {
 		});
 
 		response.code(200);
-
 		return response;
 	}
 
@@ -174,12 +173,11 @@ const getBookById = (request, h) => {
 	});
 
 	response.code(404);
-
 	return response;
 };
 
 const editBook = (request, h) => {
-	const {id} = request.params;
+	const {bookId} = request.params;
 	const {
 		name,
 		year,
@@ -211,7 +209,7 @@ const editBook = (request, h) => {
 		return response;
 	}
 
-	const index = books.findIndex(book => book.id === id);
+	const index = books.findIndex(book => book.id === bookId);
 
 	if (index === -1) {
 		const response = h.response({
@@ -265,7 +263,7 @@ const editBook = (request, h) => {
 			status: 'success',
 			message: 'Buku berhasil diperbarui',
 			data: {
-				bookId: id,
+				bookId: bookId,
 			},
 		});
 
@@ -274,10 +272,9 @@ const editBook = (request, h) => {
 	}
 };
 
-const deleteBook = (response, h) => {
-	// eslint-disable-next-line no-undef
-	const {id} = request.params;
-	const index = books.findIndex(book => book.id === id);
+const deleteBook = (request, h) => {
+	const {bookId} = request.params;
+	const index = books.findIndex(book => book.id === bookId);
 
 	if (index !== -1) {
 		books.splice(index, 1);
